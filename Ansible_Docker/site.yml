@@ -1,0 +1,19 @@
+- hosts: localhost
+
+  vars:
+    apache_group:
+      Debian: "root"
+      RedHat: "apache"
+
+
+
+
+
+  tasks:
+    - name: ping
+      shell: ping <host> m -c 2
+      register: ping_result
+
+
+    - debug:
+        var: ping_result.stdout_lines
