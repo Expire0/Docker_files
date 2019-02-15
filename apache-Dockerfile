@@ -1,0 +1,11 @@
+FROM httpd:2.4
+COPY ./public_html/ /usr/local/apache2/htdocs/
+
+# Exposed ports
+
+EXPOSE 80
+
+#Build sudo docker build -t my-apache2 .
+#run  sudo docker run -p 80:80 -d  my-apache2
+#copy from a container 
+#sudo docker cp <container_name>:/usr/local/apache2/htdocs/index.html .
