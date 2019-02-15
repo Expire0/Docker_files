@@ -1,0 +1,12 @@
+http://edoceo.com/howto/postfix-gateway
+
+https://hub.docker.com/r/servercontainers/mail-gateway/dockerfile
+
+
+https://stackoverflow.com/questions/27030605/smtp-starttls-certificate-negotitiation-via-telnet
+https://msol.io/blog/tech/create-a-self-signed-ssl-certificate-with-openssl/
+
+with password
+https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl
+
+https://zurgl.com/how-to-configure-tls-encryption-in-postfix/

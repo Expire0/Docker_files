@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "80:80"
+  Mysql:
+    image: "docker.io/mysql"
+    environment:
+           - MYSQL_ROOT_PASSWORD= "test"
