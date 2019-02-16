@@ -15,3 +15,7 @@ If you plan on using swarm , make sure the image is built on each node. We are n
 Docker swarm to avoid the need for a secondary dns server. only serve the masters via the swarm 
 docker swarm init 
 docker service create --name=dns-master --replicas 2 --dns=8.8.8.8 --dns=8.8.4.4 -p 53:53/udp -p 53:53/tcp test:bind
+
+
+force update swarm to latest image 
+docker service update --force --image powserve:dns1 dns-master
