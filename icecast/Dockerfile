@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL maintainer Expire0 <tier3support@gmail.com>
+LABEL maintainer Expire0 <<>@gmail.com>
 
 
 RUN addgroup -S icecast && \
