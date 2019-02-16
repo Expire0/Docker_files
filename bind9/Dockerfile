@@ -1,7 +1,8 @@
 FROM alpine:latest
 EXPOSE 53 53/udp
 
-RUN apk --update upgrade && apk add bind
+RUN apk --update upgrade && apk add bind 
+RUN apk add bind-tools
 
 # /etc/bind needs to be owned by root, group owned by "bind", and chmod 750
 # since we are mounting, do it manually
@@ -18,7 +19,8 @@ RUN mkdir -m 0770 -p /etc/bind && chown -R root:named /etc/bind ; \
     rndc-confgen -a -r /dev/urandom
 
 COPY configs/. /etc/bind/
-
+#COPY named/. /etc/bind/
+COPY data/named/. /var/cache/bind/
 # Mounts
 # NOTE: Per Dockerfile manual -->
 #	"if any build steps change the data within the volume

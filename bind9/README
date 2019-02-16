@@ -1,2 +1,9 @@
 You should add your zones to: named.conf.local
 Generally, that's the only file you will need to modify
+
+configs,data are not part of this repo. They are hosted in a more secure repo
+
+docker run --name=dns-master -d \
+--dns=8.8.8.8 --dns=8.8.4.4 \
+-p 53:53/udp -p 53:53/tcp \
+test:bind
