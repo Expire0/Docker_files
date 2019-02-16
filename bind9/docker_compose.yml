@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  bind:
+    restart: always
+    image: <>
+    ports:
+    - "53:53/udp"
+    - "53:53/tcp"
