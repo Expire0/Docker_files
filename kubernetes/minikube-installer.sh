@@ -3,7 +3,16 @@
 ##sed -i 's#Environment="KUBELET_KUBECONFIG_ARGS=-.*#Environment="KUBELET_KUBECONFIG_ARGS=--kubeconfig=/etc/kubernetes/kubelet.conf --require-kubeconfig=true --cgroup-driver=systemd"#g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 ## add this to the install https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository
 
-
+echo "installing docker ce "
+yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+ yum-config-manager \
+    --add-repo \
+    https://download.docker.com/linux/centos/docker-ce.repo
+    
+ yum -y install docker-ce docker-ce-cli containerd.io   
+  
 
 #download the latest minikube 
 echo "Installing minikube"
