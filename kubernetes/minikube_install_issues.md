@@ -17,7 +17,7 @@ Failed to connect socket to '/var/run/libvirt/libvirt-sock'
 
 Once I was able to resolve Error #1. I moved on to trying to run minikube with the kvm driver.So i thought this would be possible on a remote cloud server. I was completed wrong in regards to this AWS server I was using. I followed the instructions at https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#kvm2-driver and in the end received the error message. I finally figured out that I needed to start libvirtd with systemctl . It would have been nice to have this documented somewhere and i plan on doing a pull request to make it so. 
 
-Thoughts: So you thought i was able to overcome Error #2, nope. The issue with this error is that I could not run minikube with the kvm driver because virtualiation was not enabled at the host level. So I found that I needed to use the none driver instead "minikube start --vm-driver none"
+Thoughts: So you thought i was able to overcome Error #2, nope. The issue with this error is that I could not run minikube with the kvm driver because virtualiation was not enabled at the host level. So I found that I needed to use the none driver instead `minikube start --vm-driver none`
 
 ***Error #3***
 Application conflicts 
@@ -34,6 +34,6 @@ And "kubelet" service use "cgroupfs" in the "/etc/systemd/system/kubelet.service
 Solution: To overcome this issue I had to uninstall docker that  was part of the Centos repository and install Docker Ce. Per https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository . Again dont use the Centos repos for anything relating to minikube
 
 
-In the end after trying to get minikube installed. I really got tired of running "minikube start" and receiving multiple errors. I made a bash script that will overcome the errors I mention above. So my pain will help someone else out there trying to install minikube on Centos .  Check out the installer at https://github.com/Expire0/Docker_files/blob/master/kubernetes/minikube-installer.sh
+In the end after trying to get minikube installed. I really got tired of running `minikube start` and receiving multiple errors. I made a bash script that will overcome the errors I mention above. So my pain will help someone else out there trying to install minikube on Centos .  Check out the installer at https://github.com/Expire0/Docker_files/blob/master/kubernetes/minikube-installer.sh
 
 Now it's time to do some labbing. 
