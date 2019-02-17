@@ -1,4 +1,4 @@
-#MiniKube installation issues
+##MiniKube installation issues
 
 I wanted to document some of the issues I had installing minikube. I also want to note some of the issues 
 may be related to how AWS is setup and Centos repos. 
