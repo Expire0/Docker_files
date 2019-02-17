@@ -4,11 +4,6 @@
 ## add this to the install https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository
 
 
-echo "installing docker"
-yum -y install docker 
-systemctl enable docker 
-systemctl start docker 
-
 
 #download the latest minikube 
 echo "Installing minikube"
