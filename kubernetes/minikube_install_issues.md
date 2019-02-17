@@ -31,4 +31,9 @@ kubelet fails with error "misconfiguration: kubelet cgroup driver: "cgroupfs" is
 Thoughts: This error took me about a 90 minutes to resolve. The CentOS based Docker comes with "systemd" as "cgroup-driver" (--cgroup-driver=systemd).
 And "kubelet" service use "cgroupfs" in the "/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" file as "cgroup-driver" (--cgroup-driver=cgroupfs).
 
-Solution: To overcome this issue I had to uninstall docker that  was part of the Centos repository and install Docker Ce. Per https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository . Again dont user the Centos repos for anything relating to minikube
+Solution: To overcome this issue I had to uninstall docker that  was part of the Centos repository and install Docker Ce. Per https://docs.docker.com/install/linux/docker-ce/centos/#install-using-the-repository . Again dont use the Centos repos for anything relating to minikube
+
+
+In the end after trying to get minikube installed. I really got tired of running "minikube start" and receiving multiple errors. I made a bash script that will overcome the errors I mention above. So my pain will help someone else out there trying to install minikube on Centos .  Check out the installer at https://github.com/Expire0/Docker_files/blob/master/kubernetes/minikube-installer.sh
+
+Now it's time to do some labbing. 
