@@ -4,7 +4,7 @@ I wanted to document some of the issues I had installing minikube. I also want t
 may be related to how AWS is setup and Centos repos. 
 
 I was following the instructions at https://kubernetes.io/docs/tasks/tools/install-minikube/ which seem straight forward. 
-My problem really started here https://kubernetes.io/docs/tasks/tools/install-minikube/#install-kubectl . 
+My problem  started here https://kubernetes.io/docs/tasks/tools/install-minikube/#install-kubectl . 
 
 Error #1
 Error creating host:: sudo systemctl -f restart docker: Process exited with status 1
