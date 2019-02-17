@@ -1,4 +1,6 @@
 ## This was created for Centos/Fedora 
+## error https://github.com/kubernetes/kubernetes/issues/43805
+##sed -i 's#Environment="KUBELET_KUBECONFIG_ARGS=-.*#Environment="KUBELET_KUBECONFIG_ARGS=--kubeconfig=/etc/kubernetes/kubelet.conf --require-kubeconfig=true --cgroup-driver=systemd"#g' /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
 echo "installing docker"
 yum -y install docker 
