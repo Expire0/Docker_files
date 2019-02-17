@@ -1,3 +1,5 @@
+## This was created for Centos/Fedora 
+
 echo "installing docker"
 yum -y install docker 
 systemctl enable docker 
