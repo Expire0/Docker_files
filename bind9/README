@@ -4,12 +4,14 @@ Generally, that's the only file you will need to modify
 configs,data are not part of this repo. They are hosted in a more secure repo
 
 #Install and setup 
+Build the image using the included dockerfile
+docker build -t name:tag .
 
 Git clone this repo and the config repo.  Your config directory should contain your name.conf file and zone data 
 docker run --name=dns-master -d \
 --dns=8.8.8.8 --dns=8.8.4.4 \
 -p 53:53/udp -p 53:53/tcp \
-test:bind
+name:tag
 
 If you plan on using swarm , make sure the image is built on each node. We are not using a repository at the moment. 
 Docker swarm to avoid the need for a secondary dns server. only serve the masters via the swarm 
