@@ -1,7 +1,7 @@
 
 
 cp ../../expire0_priv/bind-configs/configs.zip .
-unzip configs.zip 
+unzip -P $2 configs.zip 
 
 docker build -t powserve:dns$1 . 
 echo "images build complete. Cleaning up the repo"

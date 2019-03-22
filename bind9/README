@@ -2,10 +2,37 @@ You should add your zones to: named.conf.local
 Generally, that's the only file you will need to modify
 
 configs,data are not part of this repo. They are hosted in a more secure repo
+Example of my config.zip file . 
+drwxr-xr-x  3.0 unx        0 bx stor 19-Feb-15 21:44 configs/
+-rw-r--r--  3.0 unx      588 TX defN 19-Feb-03 02:12 configs/named.conf.default-zones
+-rw-r--r--  3.0 unx     3637 TX defN 19-Feb-03 02:12 configs/named.conf.options
+-rw-r--r--  3.0 unx     1569 TX defN 19-Feb-03 02:12 configs/named.conf.rfc1918
+drwxr-xr-x  3.0 unx        0 bx stor 19-Feb-03 02:12 configs/example-configs/
+drwxr-xr-x  3.0 unx        0 bx stor 19-Feb-03 02:12 configs/example-configs/recursive-resolver/
+-rw-r--r--  3.0 unx     3912 TX defN 19-Feb-03 02:12 configs/example-configs/recursive-resolver/name         d.conf.options
+-rw-r--r--  3.0 unx      654 TX defN 19-Feb-03 02:12 configs/example-configs/README
+drwxr-xr-x  3.0 unx        0 bx stor 19-Feb-03 02:12 configs/example-configs/authoritative/
+-rw-r--r--  3.0 unx     1875 TX defN 19-Feb-03 02:12 configs/example-configs/authoritative/named.con         f.options
+drwxr-xr-x  3.0 unx        0 bx stor 19-Feb-03 02:12 configs/default-zones/
+-rw-r--r--  3.0 unx      237 TX defN 19-Feb-03 02:12 configs/default-zones/db.0
+-rw-r--r--  3.0 unx      271 TX defN 19-Feb-03 02:12 configs/default-zones/db.127
+-rw-r--r--  3.0 unx      237 TX defN 19-Feb-03 02:12 configs/default-zones/db.255
+-rw-r--r--  3.0 unx      353 TX defN 19-Feb-03 02:12 configs/default-zones/db.empty
+-rw-r--r--  3.0 unx      270 TX defN 19-Feb-03 02:12 configs/default-zones/db.local
+-rw-r--r--  3.0 unx     3315 TX defN 19-Feb-03 02:12 configs/default-zones/db.root
+-rw-r--r--  3.0 unx      525 TX defN 19-Feb-03 02:12 configs/named.conf.old
+-rw-r--r--  3.0 unx     1224 TX defN 19-Feb-03 02:12 configs/named.conf.local.old
+-rwxr-x---  3.0 unx     4379 TX defN 19-Feb-15 21:34 configs/named.conf.local
+-rwxr-x---  3.0 unx     2647 TX defN 19-Feb-15 21:44 configs/named.conf
+drwxr-x---  3.0 unx        0 bx stor 19-Feb-15 20:31 data/
+drwxr-x---  3.0 unx        0 bx stor 18-Nov-04 22:11 data/named/example.host
+
 
 #Install and setup 
 Build the image using the included dockerfile and pull in the configs
-./config.sh (version number)
+The config script will pull the named conf file and zone data from the private repo
+and build out the new docker image version 
+./config.sh (version number) (password for zip)
 
 Git clone this repo and the config repo.  Your config directory should contain your name.conf file and zone data 
 docker run --name=dns-master -d \
