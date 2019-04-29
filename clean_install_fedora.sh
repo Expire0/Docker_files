@@ -13,8 +13,7 @@ dnf remove docker \
                   yum.utils
 
 
-dnf install -y dnf-utils \
-  dnf-plugins-core \
+dnf install -y dnf-plugins-core \
   device-mapper-persistent-data \
   lvm2
 
