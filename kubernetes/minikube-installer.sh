@@ -56,7 +56,8 @@ repo_gpgcheck=1
 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 exclude=kube*
 EOF
-yum -y install   kubectl --disableexcludes=kubernetes
+
+dnf -y install   kubectl --disableexcludes=kubernetes
 
 # Set SELinux in permissive mode (effectively disabling it)
 echo "Reconfiguring Selinux"
