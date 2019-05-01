@@ -36,7 +36,6 @@ echo "installing the kvm driver"
 dnf install libvirt-daemon-kvm qemu-kvm
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
-sudo systemctl status libvirtd.service
 
 newgrp libvirt
 
