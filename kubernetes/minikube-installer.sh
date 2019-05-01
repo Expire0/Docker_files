@@ -37,7 +37,7 @@ dnf install libvirt-daemon-kvm qemu-kvm
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 sudo systemctl status libvirtd.service
-newgrp libvirt
+#newgrp libvirt
 usermod -a -G libvirt $(whoami)
 
 
