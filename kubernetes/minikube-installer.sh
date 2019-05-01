@@ -32,6 +32,20 @@ dnf install -y dnf-plugins-core \
   device-mapper-persistent-data \
   lvm2
 
+echo "installing the kvm driver"
+dnf install libvirt-daemon-kvm qemu-kvm
+sudo systemctl enable libvirtd.service
+sudo systemctl start libvirtd.service
+sudo systemctl status libvirtd.service
+usermod -a -G libvirt $(whoami)
+newgrp libvirt
+
+
+curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-driver-kvm2 \
+  && sudo install docker-machine-driver-kvm2 /usr/local/bin/
+
+
+echo "preparing docker repo"
 dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 dnf config-manager  --enablerepo=docker-ce-edge
