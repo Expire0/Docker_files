@@ -32,11 +32,6 @@ dnf install -y dnf-plugins-core \
   device-mapper-persistent-data \
   lvm2
 
-echo "installing the kvm driver"
-dnf install libvirt-daemon-kvm qemu-kvm
-sudo systemctl enable libvirtd.service
-sudo systemctl start libvirtd.service
-
 newgrp libvirt
 
 usermod -a -G libvirt $(whoami)
