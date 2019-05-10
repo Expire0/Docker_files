@@ -85,3 +85,13 @@ systemctl enable --now kubelet
 passwd 
 minikube delete
 minikube start --vm-driver=none
+
+echo "installling kubens and kubectx"
+git clone https://github.com/ahmetb/kubectx.git
+cp kubectx/kubectx /usr/local/bin/ && chmod +x /usr/local/bin/kubectx
+cp kubectx/kubens /usr/local/bin/  && chmod +x /usr/local/bin/kubens
+
+#    to run kubectl as a none root user . run this as that user
+#    ▪ sudo mv /root/.kube /user/.minikube $HOME
+#    ▪ sudo chown -R $USER $HOME/.kube $HOME/.minikube
+
