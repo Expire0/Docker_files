@@ -22,6 +22,6 @@ dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 dnf config-manager  --enablerepo=docker-ce-edge
 
 
-dnf -y install docker-ce
+dnf -y install docker-ce docker-compose
 
 systemctl start docker && systemctl enable docker
