@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  whoami:
+    image: jwilder/whoami
+    environment:
+      - VIRTUAL_HOST=whoami.local
+  juypter:
+    build: .
+    environment:
+      - VIRTUAL_HOST=juy.local
+      - VIRTUAL_PROTO=https
+      - VIRTUAL_PORT=443

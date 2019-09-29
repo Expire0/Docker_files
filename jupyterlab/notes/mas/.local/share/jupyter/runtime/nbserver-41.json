@@ -1,0 +1,11 @@
+{
+  "base_url": "/user/mas/",
+  "hostname": "127.0.0.1",
+  "notebook_dir": "/home",
+  "password": false,
+  "pid": 41,
+  "port": 43803,
+  "secure": false,
+  "token": "",
+  "url": "http://127.0.0.1:43803/user/mas/"
+}

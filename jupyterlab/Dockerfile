@@ -17,6 +17,10 @@ COPY jupyterhub_config.py /srv/jupyter/
 RUN mkdir /var/tmp/mas
 RUN chmod 777 /var/tmp/mas
 RUN ln -s /var/tmp/mas /home/mas
+#TESTING SSL
+#openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem 
+COPY mycert.pem /srv/jupyter/
+COPY mykey.key /srv/jupyter/
 
 RUN echo 'Remember to create a user in the container and add update the user to admin in the db'
 RUN echo 'lastly update the config to set that user as admin under'
