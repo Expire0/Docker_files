@@ -3,5 +3,8 @@ version: '2'
 services:
   juypter:
     build: .
+    ports:
+      - "8000:8000"
     volumes:
       - ./notes:/var/tmp/
+
