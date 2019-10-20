@@ -35,7 +35,7 @@ COPY mykey.key /srv/jupyter/
 
 #patch so the notebook can use Python3.8
 COPY kernels/python37 /usr/local/share/jupyter/kernels/
-COP7 kernels/python38 /usr/local/share/jupyter/kernels/
+COPY kernels/python38 /usr/local/share/jupyter/kernels/
 
 RUN echo 'Remember to create a user in the container and add update the user to admin in the db'
 RUN echo 'lastly update the config to set that user as admin under'
