@@ -7,6 +7,9 @@ RUN  npm install -g configurable-http-proxy
 
 RUN apt-get install --yes libffi-dev zlib1g-dev curl wget 
 
+#Redhat 
+#RUN yum -y install libffi-devel zlib-devel openssl-revel
+
 WORKDIR /root
 RUN wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
 RUN tar xzf Python-3.8.0.tgz
