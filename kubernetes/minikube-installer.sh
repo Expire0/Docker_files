@@ -48,6 +48,7 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-
 
 
 echo "preparing docker repo"
+dnf install 'dnf-command(config-manager)'
 dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
 dnf config-manager  --enablerepo=docker-ce-edge
