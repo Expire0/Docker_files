@@ -1,4 +1,4 @@
-## This was created for Centos7/Fedora 
+## This was created for Centos7-8/Fedora 
 ## Expire0 for openkb.org 
 ## https://kubernetes.io/docs/setup/minikube/#quickstart
 ## error https://github.com/kubernetes/kubernetes/issues/43805
@@ -18,14 +18,14 @@
 #    --add-repo \
 #    https://download.docker.com/linux/centos/docker-ce.repo
 
-yum install dnf
+yum install -y dnf
 
-dnf remove docker \
+dnf remove -y docker \
                   docker-common \
                   docker-selinux \
                   docker-engine \
-                  yum \
-                  yum.utils
+echo "remove buildah and podman"
+dnf remove -y podman buildah
 
 
 dnf install -y dnf-plugins-core \
@@ -33,7 +33,7 @@ dnf install -y dnf-plugins-core \
   lvm2
 
 echo "installing the kvm driver"
-dnf install libvirt-daemon-kvm qemu-kvm
+dnf install -y libvirt-daemon-kvm qemu-kvm
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 sudo systemctl status libvirtd.service
@@ -48,10 +48,10 @@ curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machine-
 
 
 echo "preparing docker repo"
-dnf install 'dnf-command(config-manager)'
+dnf install -y 'dnf-command(config-manager)'
 dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-dnf config-manager  --enablerepo=docker-ce-edge
+dnf config-manager  --enable  docker-ce-nightly
 dnf -y install docker-ce docker-ce-cli containerd.io   
   
 
@@ -74,7 +74,7 @@ gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cl
 exclude=kube*
 EOF
 
-dnf -y install   kubectl --disableexcludes=kubernetes
+dnf -y install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 # Set SELinux in permissive mode (effectively disabling it)
 echo "Reconfiguring Selinux"
@@ -83,9 +83,12 @@ sed -i 's/^SELINUX=enforcing$/SELINUX=permissive/' /etc/selinux/config
 
 systemctl enable --now kubelet
 
-passwd 
+systemctl enable docker 
+systemctl start docker 
+usermod -aG docker,wheel mini && newgrp docker
 minikube delete
-minikube start --vm-driver=none
+minikube start --vm-driver=docker
+exit
 
 echo "installling kubens and kubectx"
 git clone https://github.com/ahmetb/kubectx.git
@@ -95,4 +98,10 @@ cp kubectx/kubens /usr/local/bin/  && chmod +x /usr/local/bin/kubens
 #    to run kubectl as a none root user . run this as that user
 #    ▪ sudo mv /root/.kube /user/.minikube $HOME
 #    ▪ sudo chown -R $USER $HOME/.kube $HOME/.minikube
+
+echo "Installing Helm"
+wget https://get.helm.sh/helm-v3.5.3-linux-amd64.tar.gz
+tar -zxvf helm-v3.5.3-linux-amd64.tar.gz
+mv linux-amd64/helm /usr/local/bin/helm
+helm repo add stable https://charts.helm.sh/stable
 
