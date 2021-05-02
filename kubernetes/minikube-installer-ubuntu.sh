@@ -43,6 +43,6 @@ sudo apt-get -y update
 sudo apt-get install -y kubectl
 apt -y autoremove
 
-passwd 
 minikube delete
-minikube start --vm-driver=none
+su - mini
+echo " user minikube start --vm-driver=docker to start minikube"
