@@ -1,3 +1,4 @@
+groupadd docker
 userdel -r mini
 useradd mini
 passwd mini
