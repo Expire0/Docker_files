@@ -43,6 +43,12 @@ sudo apt-get -y update
 sudo apt-get install -y kubectl
 apt -y autoremove
 
+echo "Installing Helm"
+wget https://get.helm.sh/helm-v3.5.3-linux-amd64.tar.gz
+tar -zxvf helm-v3.5.3-linux-amd64.tar.gz
+sudo mv linux-amd64/helm /usr/local/bin/helm
+helm repo add stable https://charts.helm.sh/stable
+
 minikube delete
 su - mini
 echo " user minikube start --vm-driver=docker to start minikube"
