@@ -29,10 +29,10 @@ echo "updating the system cache and applications"
 
 #download the latest minikube 
 echo "Installing minikube"
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+curl -Lo https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
   && chmod +x minikube-linux-amd64
 
-sudo install minikube-linux-amd64 && rm minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
 
 echo "setting up kubectl"
 
