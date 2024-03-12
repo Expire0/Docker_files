@@ -59,4 +59,17 @@ docker service create --name=dns-master --replicas 2 --dns=8.8.8.8 --dns=8.8.4.4
 
 
 force update swarm to latest image 
-docker service update --force --image powserve:dns(version number) dns-maste
+docker service update --force --image powserve:dns(version number) dns-master
+
+749  docker service update --force --image powserve:dns6 dns-master
+  750  docker service ls 
+  751  docker service ls -f
+  752  docker service ls 
+  753  docker service ls -h
+  754  docker service ls -f
+  755  docker service ls -f --h
+  756  docker service ls -f app=dns-master
+  758  docker service ps -f desired-state="running" dns-master
+  759  docker service ls  app=dns-master
+  760  docker service ls  dns-master
+  761  docker service ps  dns-master
