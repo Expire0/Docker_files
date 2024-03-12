@@ -28,11 +28,23 @@ drwxr-x---  3.0 unx        0 bx stor 19-Feb-15 20:31 data/
 drwxr-x---  3.0 unx        0 bx stor 18-Nov-04 22:11 data/named/example.host
 
 
+Docker_files repo and the configs are in expire0_priv
+
+Configs:
+go to expire0_priv/bind-configs and unzip configs.zip 
+unzip -P (password for zip) configs.zip
+make the changes to the dns configs 
+run the prep.sh file which removes the old zip and create a new encrypted zip 
+remove the config and data directories 
+push this back to the github repo
+
+Docker_files/Bind9
 #Install and setup 
 Build the image using the included dockerfile and pull in the configs
 The config script will pull the named conf file and zone data from the private repo
 and build out the new docker image version 
 ./config.sh (version number) (password for zip)
+
 
 Git clone this repo and the config repo.  Your config directory should contain your name.conf file and zone data 
 docker run --name=dns-master -d \
@@ -47,4 +59,4 @@ docker service create --name=dns-master --replicas 2 --dns=8.8.8.8 --dns=8.8.4.4
 
 
 force update swarm to latest image 
-docker service update --force --image powserve:dns(version number) dns-master
+docker service update --force --image powserve:dns(version number) dns-maste
