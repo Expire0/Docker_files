@@ -52,6 +52,9 @@ docker run --name=dns-master -d \
 -p 53:53/udp -p 53:53/tcp \
 powserve:dns(version number)
 
+testing dig @127.0.0.1 -p 8053 domain.com 
+docker exec -it <container_id> named -V 
+
 If you plan on using swarm , make sure the image is built on each node. We are not using a repository at the moment. 
 Docker swarm to avoid the need for a secondary dns server. only serve the masters via the swarm 
 docker swarm init 
