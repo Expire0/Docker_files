@@ -76,3 +76,17 @@ docker service update --force --image powserve:dns(version number) dns-master
   759  docker service ls  app=dns-master
   760  docker service ls  dns-master
   761  docker service ps  dns-master
+ 42  docker swarm init
+   43  docker node ls 
+   46  docker images 
+   47  docker service create --name=dns-master --replicas 2 --dns=8.8.8.8 --dns=8.8.4.4 -p 53:53/udp -p 53:53/tcp powserve:dns
+
+  57  docker service scale dns-master=1
+
+  197  docker service list 
+  198  docker service update --force --image powserve:dns1 dns-master
+  199  docker service list 
+
+rm
+docker service rm <service_name>
+docker service create --name=dns-master --replicas 2 --dns=8.8.8.8 --dns=8.8.4.4 -p 53:53/udp -p 53:53/tcp powserve:dns
