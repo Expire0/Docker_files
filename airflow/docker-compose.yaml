@@ -1,0 +1,35 @@
+version: '3'
+services:
+  # Define Airflow service
+  airflow:
+    image: apache/airflow:latest
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+    volumes:
+      - ./dags:/usr/local/airflow/dags
+      - ./logs:/usr/local/airflow/logs
+      - ./config/airflow.cfg:/usr/local/airflow/airflow.cfg
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - airflow-network
+
+  # Define PostgreSQL service
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=airflow
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - airflow-network
+
+networks:
+  airflow-network:
+
+volumes:
+  postgres_data:
